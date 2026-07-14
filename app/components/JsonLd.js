@@ -1,4 +1,4 @@
-import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "./lib/site";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "../lib/site";
 
 export default function JsonLd() {
   const schema = {
