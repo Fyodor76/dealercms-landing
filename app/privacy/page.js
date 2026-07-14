@@ -2,7 +2,9 @@ import Link from "next/link";
 import Logo from "../components/Logo";
 
 export const metadata = {
-  title: "Политика обработки персональных данных | DealerCMS",
+  title: "Политика обработки персональных данных",
+  description:
+    "Политика обработки персональных данных сайта DealerCMS: какие данные собираются, цели обработки и контакты.",
 };
 
 export default function PrivacyPage() {

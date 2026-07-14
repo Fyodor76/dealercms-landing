@@ -2,7 +2,9 @@ import Link from "next/link";
 import Logo from "../components/Logo";
 
 export const metadata = {
-  title: "Согласие на обработку персональных данных | DealerCMS",
+  title: "Согласие на обработку персональных данных",
+  description:
+    "Согласие пользователя на обработку персональных данных при использовании сайта DealerCMS.",
 };
 
 export default function ConsentPage() {

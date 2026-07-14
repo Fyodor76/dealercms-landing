@@ -2,7 +2,9 @@ import Link from "next/link";
 import Logo from "../components/Logo";
 
 export const metadata = {
-  title: "Политика использования cookie | DealerCMS",
+  title: "Политика использования cookie",
+  description:
+    "Политика использования cookie-файлов на сайте DealerCMS: какие cookie применяются и как ими управлять.",
 };
 
 export default function CookiesPage() {
