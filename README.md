@@ -274,7 +274,7 @@ server {
 ### 3. Включить сайт
 
 ```bash
-ln -s /etc/nginx/sites-available/lumirix.ru /etc/nginx/sites-enabled/
+ln -s /etc/nginx/sites-available/dealercms.ru /etc/nginx/sites-enabled/
 nginx -t && systemctl reload nginx
 ```
 
@@ -285,7 +285,12 @@ nginx -t && systemctl reload nginx
 > Перед этим шагом оба домена должны вести на IP сервера. Проверить: `dig lumirix.ru +short`
 
 ```bash
-certbot --nginx -d lumirix.ru -d www.lumirix.ru
+certbot --nginx \
+  -d dealercms.ru -d www.dealercms.ru \
+  --email info@dealercms.ru \
+  --agree-tos \
+  --no-eff-email \
+  --redirect
 ```
 
 Certbot сам обновит конфиг Nginx, добавит SSL и редиректы с HTTP и с www.
@@ -303,7 +308,7 @@ certbot renew --dry-run
 После certbot в конфиге появится блок с `listen 443 ssl;` (Certbot сам добавляет SSL-сертификаты в существующий или новый server-блок). Открываем конфиг и правим его:
 
 ```bash
-nano /etc/nginx/sites-available/lumirix.ru
+nano /etc/nginx/sites-available/dealercms.ru
 ```
 
 Nginx версии 1.25.1+ (проверить: `nginx -v`) — старый синтаксис `listen 443 ssl http2;` устарел, нужна отдельная директива `http2 on;`:
@@ -313,7 +318,7 @@ server {
     listen 443 ssl;
     listen [::]:443 ssl;
     http2 on;
-    server_name lumirix.ru www.lumirix.ru;
+    server_name dealercms.ru www.dealercms.ru;
 
     # ... остальные строки, добавленные certbot (ssl_certificate и т.д.) ...
 }
@@ -325,7 +330,7 @@ Nginx старее 1.25.1 — используем совмещённый син
 server {
     listen 443 ssl http2;
     listen [::]:443 ssl http2;
-    server_name lumirix.ru www.lumirix.ru;
+    server_name dealercms.ru www.dealercms.ru;
 
     # ... остальные строки, добавленные certbot ...
 }
@@ -340,7 +345,7 @@ nginx -t && systemctl reload nginx
 Проверить, что HTTP/2 действительно работает:
 
 ```bash
-curl -I --http2 -s https://lumirix.ru | head -n 1
+curl -I --http2 -s https://dealercms.ru | head -n 1
 ```
 
 Если в ответе `HTTP/2 200` — всё включено.
