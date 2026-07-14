@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main>
+      <main className="w-full overflow-x-hidden">
         <Hero />
         <Products />
         <Benefits />

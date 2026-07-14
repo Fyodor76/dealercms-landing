@@ -19,8 +19,8 @@ export default function Clients() {
   const doubled = [...clients, ...clients];
 
   return (
-    <section id="clients" className="relative overflow-hidden py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section id="clients" className="relative w-full overflow-hidden py-24 sm:py-32">
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <p className="text-sm font-medium uppercase tracking-widest text-accent">
             Клиенты
@@ -34,18 +34,18 @@ export default function Clients() {
           </p>
         </div>
 
-        <div className="relative mt-16">
-          <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-20 bg-gradient-to-r from-background to-transparent sm:w-32" />
-          <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-20 bg-gradient-to-l from-background to-transparent sm:w-32" />
+        <div className="relative mt-16 w-full max-w-full overflow-hidden">
+          <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-12 bg-gradient-to-r from-background to-transparent sm:w-32" />
+          <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-12 bg-gradient-to-l from-background to-transparent sm:w-32" />
 
-          <div className="flex overflow-hidden">
-            <div className="animate-marquee flex shrink-0 gap-6">
+          <div className="w-full overflow-hidden">
+            <div className="animate-marquee flex w-max shrink-0 gap-4 sm:gap-6">
               {doubled.map((client, i) => (
                 <div
                   key={`${client.name}-${i}`}
-                  className="flex h-24 w-56 shrink-0 items-center justify-center rounded-2xl border border-border bg-surface-elevated px-6 transition-colors hover:border-accent/30"
+                  className="flex h-20 w-44 shrink-0 items-center justify-center rounded-2xl border border-border bg-surface-elevated px-4 transition-colors hover:border-accent/30 sm:h-24 sm:w-56 sm:px-6"
                 >
-                  <span className={`text-lg text-foreground/80 ${client.style}`}>
+                  <span className={`text-base text-foreground/80 sm:text-lg ${client.style}`}>
                     {client.name}
                   </span>
                 </div>

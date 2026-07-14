@@ -8,6 +8,11 @@ const inter = Inter({
   display: "swap",
 });
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata = {
   title: "DealerCMS | Платформа для создания сайтов автодилеров и дистрибьюторов",
   description:
@@ -38,7 +43,7 @@ export default function RootLayout({ children }) {
         <meta name="apple-mobile-web-app-title" content="DealerCMS" />
         <link rel="manifest" href="/icons/site.webmanifest" />
       </head>
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full w-full overflow-x-hidden flex flex-col">
         {children}
         <CookieBanner />
       </body>

@@ -67,9 +67,9 @@ export default function ContactForm() {
   };
 
   return (
-    <section id="contact" className="relative py-24 sm:py-32">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute bottom-0 left-1/2 h-[400px] w-[600px] -translate-x-1/2 rounded-full bg-accent/5 blur-[120px]" />
+    <section id="contact" className="relative overflow-hidden py-24 sm:py-32">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute bottom-0 left-1/2 h-[300px] w-[min(100vw,600px)] -translate-x-1/2 rounded-full bg-accent/5 blur-[80px] sm:h-[400px] sm:blur-[120px]" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -225,14 +225,28 @@ export default function ContactForm() {
                   <FieldError message={errors.message?.message} />
                 </div>
 
-                <div>
+                <div
+                  className={`rounded-xl border p-3 transition-colors ${
+                    errors.consent
+                      ? "border-red-500/50 bg-red-500/5"
+                      : "border-transparent"
+                  }`}
+                >
                   <label className="flex cursor-pointer items-start gap-3">
                     <input
                       type="checkbox"
-                      className="mt-1 h-4 w-4 rounded border-border bg-surface accent-accent"
+                      className={`mt-1 h-4 w-4 shrink-0 rounded border bg-surface accent-accent ${
+                        errors.consent
+                          ? "border-red-500 ring-2 ring-red-500/25"
+                          : "border-border"
+                      }`}
                       {...register("consent")}
                     />
-                    <span className="text-sm leading-relaxed text-muted">
+                    <span
+                      className={`text-sm leading-relaxed ${
+                        errors.consent ? "text-foreground" : "text-muted"
+                      }`}
+                    >
                       Я соглашаюсь с условиями{" "}
                       <a href="/privacy" className="text-accent underline-offset-2 hover:underline">
                         Политики обработки персональных данных

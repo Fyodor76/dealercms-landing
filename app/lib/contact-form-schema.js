@@ -30,8 +30,8 @@ export const contactFormSchema = z.object({
       (value) => !value || value.length <= 2000,
       "Сообщение слишком длинное",
     ),
-  consent: z.literal(true, {
-    errorMap: () => ({ message: "Необходимо дать согласие на обработку данных" }),
+  consent: z.boolean().refine((value) => value === true, {
+    message: "Необходимо дать согласие на обработку персональных данных",
   }),
 });
 
