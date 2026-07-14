@@ -22,25 +22,31 @@ export async function sendContactEmail({ name, email, phone, message }) {
 
   const from = process.env.SMTP_FROM || process.env.SMTP_USER;
   const to = process.env.SMTP_TO || process.env.SMTP_USER;
+  const phoneLine = phone?.trim() || "не указан";
+  const messageLine = message?.trim() || "не указано";
 
   const text = [
     "Новая заявка с сайта DealerCMS",
     "",
     `Имя: ${name}`,
     `E-mail: ${email}`,
-    `Телефон: ${phone}`,
+    `Телефон: ${phoneLine}`,
     "",
     "Сообщение:",
-    message,
+    messageLine,
   ].join("\n");
+
+  const phoneHtml = phone?.trim()
+    ? `<a href="tel:${escapeHtml(phone)}">${escapeHtml(phone)}</a>`
+    : "не указан";
 
   const html = `
     <h2>Новая заявка с сайта DealerCMS</h2>
     <p><strong>Имя:</strong> ${escapeHtml(name)}</p>
     <p><strong>E-mail:</strong> <a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></p>
-    <p><strong>Телефон:</strong> <a href="tel:${escapeHtml(phone)}">${escapeHtml(phone)}</a></p>
+    <p><strong>Телефон:</strong> ${phoneHtml}</p>
     <p><strong>Сообщение:</strong></p>
-    <p>${escapeHtml(message).replace(/\n/g, "<br>")}</p>
+    <p>${escapeHtml(messageLine).replace(/\n/g, "<br>")}</p>
   `;
 
   await transporter.sendMail({

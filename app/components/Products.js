@@ -4,66 +4,66 @@ import { useState } from "react";
 
 const products = [
   {
-    id: "platform",
-    tag: "CMS-платформа",
-    title: "DealerPlatform",
-    subtitle: "No-code конструктор сайтов для продажи автомобилей",
+    id: "sites",
+    tag: "Сайты и контент",
+    title: "DealerCMS Sites",
+    subtitle: "Конструктор дилерских сайтов на единой платформе",
     description:
-      "Фундамент цифровой экосистемы вашего бренда. Централизованное управление контентом дистрибьютора и локальное редактирование дилерами.",
+      "Импортёр задаёт стандарты бренда для всей сети, а каждый дилерский центр самостоятельно ведёт локальный контент — без отдельной разработки под каждую точку.",
     features: [
       {
-        title: "Центральное обновление",
-        text: "Контент редактируется дистрибьютором. Единый стиль и быстрые обновления для всей дилерской сети.",
+        title: "Единый шаблон бренда",
+        text: "Дизайн, структура и обязательные разделы обновляются централизованно — сеть выглядит цельно, изменения доходят до всех сайтов сразу.",
       },
       {
-        title: "Локальное обновление",
-        text: "Дилеры создают собственные разделы, публикуют новости и специальные предложения.",
+        title: "Редактирование на стороне дилера",
+        text: "Дилер добавляет акции, новости, посадочные страницы и медиа под свои задачи, оставаясь в рамках брендбука.",
       },
     ],
     accent: "from-accent/20 to-accent/5",
   },
   {
-    id: "shop",
-    tag: "Онлайн-витрина",
-    title: "DealerShop",
-    subtitle: "Устанавливается на любой сайт или автономно",
+    id: "catalog",
+    tag: "Каталог и подбор",
+    title: "DealerCMS Catalog",
+    subtitle: "Интерактивный каталог автомобилей для сайта и внешних каналов",
     description:
-      "Открывает возможности для потенциальных клиентов: подбор, сравнение, расчёт кредита и страховки.",
+      "Покупатель работает с актуальным стоком, сравнивает комплектации и рассчитывает условия покупки ещё до визита в салон.",
     features: [
-      "Новые автомобили в наличии",
-      "Автомобили с пробегом",
-      "Онлайн-витрина в Telegram",
-      "Расчёт кредитных предложений",
-      "Оценка trade-in по базе классифайдов",
+      "Каталог новых автомобилей и авто с пробегом",
+      "Фильтры, сравнение моделей и комплектаций",
+      "Калькуляторы кредита, страхования и trade-in",
+      "Виджет для встраивания на сайт или отдельный стендалон",
+      "Выгрузка каталога в мессенджеры и партнёрские площадки",
     ],
     accent: "from-blue-500/20 to-blue-500/5",
   },
   {
-    id: "deal",
-    tag: "Цифровая сделка",
-    title: "DealerDeal",
-    subtitle: "Помогает продавать автомобили онлайн",
+    id: "sales",
+    tag: "Онлайн-продажи",
+    title: "DealerCMS Sales",
+    subtitle: "Инструменты для проведения сделки в digital-канале",
     description:
-      "Удобный формат коммуникаций и сбор информации обогащает лиды и повышает конверсию.",
+      "Фиксирует действия клиента на каждом шаге, передаёт обогащённый лид в CRM и помогает довести покупателя до бронирования или оплаты.",
     features: [
-      "Фиксация скидки и частичная онлайн-оплата",
-      "Интеграция с CRM",
-      "Кредитный калькулятор и страховка",
-      "Лизинг и продажа аксессуаров",
-      "Триггерные рассылки для возврата в сделку",
+      "Бронирование автомобиля и приём предоплаты",
+      "Интеграция с CRM и учётными системами дилера",
+      "Оформление кредита, лизинга и страховых продуктов",
+      "Продажа дополнительного оборудования и аксессуаров",
+      "Автоматические уведомления на этапах сделки",
     ],
     accent: "from-violet-500/20 to-violet-500/5",
   },
 ];
 
 function ProductCard({ product, isOpen, onToggle }) {
-  const isPlatform = product.id === "platform";
+  const isSites = product.id === "sites";
 
   return (
     <div
       className={`group gradient-card rounded-2xl border border-border p-6 transition-all duration-300 hover:border-accent/30 sm:p-8 ${
         isOpen ? "border-accent/30" : ""
-      }`}
+      } lg:border-border lg:hover:border-accent/30`}
     >
       <div
         className={`mb-6 inline-flex rounded-full bg-gradient-to-r ${product.accent} px-4 py-1.5 text-xs font-medium uppercase tracking-wider text-accent`}
@@ -80,9 +80,9 @@ function ProductCard({ product, isOpen, onToggle }) {
       <div
         className={`overflow-hidden transition-all duration-500 ${
           isOpen ? "mt-6 max-h-[600px] opacity-100" : "max-h-0 opacity-0"
-        }`}
+        } lg:mt-6 lg:max-h-none lg:opacity-100`}
       >
-        {isPlatform ? (
+        {isSites ? (
           <div className="space-y-4">
             {product.features.map((f) => (
               <div
@@ -109,9 +109,9 @@ function ProductCard({ product, isOpen, onToggle }) {
       <button
         type="button"
         onClick={onToggle}
-        className="mt-6 flex items-center gap-2 text-sm font-medium text-accent transition-colors hover:text-accent-hover"
+        className="mt-6 flex items-center gap-2 text-sm font-medium text-accent transition-colors hover:text-accent-hover lg:hidden"
       >
-        {isOpen ? "Свернуть" : "Развернуть"}
+        {isOpen ? "Свернуть" : "Подробнее"}
         <svg
           className={`h-4 w-4 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
           fill="none"
@@ -131,22 +131,23 @@ function ProductCard({ product, isOpen, onToggle }) {
 }
 
 export default function Products() {
-  const [openId, setOpenId] = useState("platform");
+  const [openId, setOpenId] = useState(null);
 
   return (
     <section id="products" className="relative py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl">
           <p className="text-sm font-medium uppercase tracking-widest text-accent">
-            Наши продукты
+            Модули платформы
           </p>
           <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            Соединяем IT, дизайн
+            От сайта до сделки —
             <br />
-            и маркетинг
+            в одной экосистеме
           </h2>
           <p className="mt-4 text-lg text-muted">
-            Помогаем снизить стоимость лидов и увеличить конверсию
+            Три связанных модуля закрывают digital-путь клиента: привлечение,
+            подбор автомобиля и оформление покупки
           </p>
         </div>
 
@@ -164,10 +165,12 @@ export default function Products() {
         </div>
 
         <div className="mt-16 rounded-2xl border border-border bg-surface p-8 text-center sm:p-12">
-          <h3 className="text-2xl font-bold sm:text-3xl">Понравился продукт?</h3>
+          <h3 className="text-2xl font-bold sm:text-3xl">
+            Нужна вся экосистема или отдельный модуль?
+          </h3>
           <p className="mx-auto mt-3 max-w-xl text-muted">
-            Узнайте больше о дополнительных модулях — каждый из них подводит
-            клиента к покупке автомобиля
+            Подберём конфигурацию под вашу сеть — от одного дилерского центра
+            до федерального бренда
           </p>
           <a
             href="#contact"

@@ -18,8 +18,8 @@ export default function Hero() {
         </h1>
 
         <p className="animate-fade-up-delay-2 mt-6 max-w-2xl text-lg leading-relaxed text-muted sm:text-xl">
-          Продавайте больше автомобилей онлайн с платформой DealerCMS —
-          CMS, онлайн-витрина и цифровая сделка в одной экосистеме
+          DealerCMS объединяет сайты дилеров, каталог автомобилей и
+          инструменты онлайн-продаж в единой платформе для автобизнеса
         </p>
 
         <div className="animate-fade-up-delay-2 mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
@@ -33,7 +33,7 @@ export default function Hero() {
             href="#products"
             className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-8 py-4 text-base font-medium transition-colors hover:border-accent/40 hover:bg-white/5"
           >
-            Наши продукты
+            Наши модули
             <svg
               className="h-4 w-4"
               fill="none"

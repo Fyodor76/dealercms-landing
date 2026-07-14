@@ -1,13 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   contactFormSchema,
   contactFormDefaultValues,
 } from "../lib/contact-form-schema";
 import { getContactApiUrl } from "../lib/contact-api";
+import { formatRuPhone, RU_PHONE_MASK_EMPTY } from "../lib/phone-mask";
 
 const inputClass = (hasError) =>
   `w-full rounded-xl border bg-surface px-4 py-3 text-foreground outline-none transition-colors placeholder:text-muted/50 focus:ring-1 ${
@@ -27,6 +28,7 @@ export default function ContactForm() {
 
   const {
     register,
+    control,
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
@@ -175,22 +177,43 @@ export default function ContactForm() {
 
                 <div>
                   <label htmlFor="phone" className="mb-2 block text-sm font-medium">
-                    Телефон <span className="text-accent">*</span>
+                    Телефон
                   </label>
-                  <input
-                    id="phone"
-                    type="tel"
-                    autoComplete="tel"
-                    placeholder="+7 (___) ___-__-__"
-                    className={inputClass(errors.phone)}
-                    {...register("phone")}
+                  <Controller
+                    name="phone"
+                    control={control}
+                    render={({ field }) => (
+                      <input
+                        id="phone"
+                        type="tel"
+                        inputMode="tel"
+                        autoComplete="tel"
+                        placeholder="+7 (___) ___-__-__"
+                        className={inputClass(errors.phone)}
+                        value={field.value}
+                        onChange={(event) => {
+                          field.onChange(formatRuPhone(event.target.value));
+                        }}
+                        onFocus={() => {
+                          if (!field.value) {
+                            field.onChange(RU_PHONE_MASK_EMPTY);
+                          }
+                        }}
+                        onBlur={() => {
+                          if (field.value === RU_PHONE_MASK_EMPTY) {
+                            field.onChange("");
+                          }
+                          field.onBlur();
+                        }}
+                      />
+                    )}
                   />
                   <FieldError message={errors.phone?.message} />
                 </div>
 
                 <div>
                   <label htmlFor="message" className="mb-2 block text-sm font-medium">
-                    Сообщение <span className="text-accent">*</span>
+                    Сообщение
                   </label>
                   <textarea
                     id="message"

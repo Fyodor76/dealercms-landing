@@ -1,7 +1,5 @@
 import { z } from "zod";
-
-const phoneRegex =
-  /^(\+7|8)?[\s\-()]*\d{3}[\s\-()]*\d{3}[\s\-()]*\d{2}[\s\-()]*\d{2}$/;
+import { RU_PHONE_MASK_REGEX } from "./phone-mask";
 
 export const contactFormSchema = z.object({
   name: z
@@ -17,13 +15,21 @@ export const contactFormSchema = z.object({
   phone: z
     .string()
     .trim()
-    .min(1, "Введите телефон")
-    .regex(phoneRegex, "Введите корректный номер телефона"),
+    .refine(
+      (value) => !value || RU_PHONE_MASK_REGEX.test(value),
+      "Введите номер телефона полностью",
+    ),
   message: z
     .string()
     .trim()
-    .min(10, "Сообщение должно содержать минимум 10 символов")
-    .max(2000, "Сообщение слишком длинное"),
+    .refine(
+      (value) => !value || value.length >= 10,
+      "Сообщение должно содержать минимум 10 символов",
+    )
+    .refine(
+      (value) => !value || value.length <= 2000,
+      "Сообщение слишком длинное",
+    ),
   consent: z.literal(true, {
     errorMap: () => ({ message: "Необходимо дать согласие на обработку данных" }),
   }),

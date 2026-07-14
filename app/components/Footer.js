@@ -48,17 +48,17 @@ export default function Footer() {
             <ul className="mt-4 space-y-3 text-sm text-muted">
               <li>
                 <a href="#products" className="transition-colors hover:text-accent">
-                  DealerPlatform
+                  DealerCMS Sites
                 </a>
               </li>
               <li>
                 <a href="#products" className="transition-colors hover:text-accent">
-                  DealerShop
+                  DealerCMS Catalog
                 </a>
               </li>
               <li>
                 <a href="#products" className="transition-colors hover:text-accent">
-                  DealerDeal
+                  DealerCMS Sales
                 </a>
               </li>
             </ul>
