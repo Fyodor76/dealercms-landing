@@ -3,14 +3,17 @@ const clients = [
   { name: "FORD", style: "font-bold tracking-wider" },
   { name: "FORLAND", style: "font-semibold tracking-wide" },
   { name: "FOTON", style: "font-semibold tracking-wider" },
-  { name: "INFINITI", style: "font-light tracking-[0.3em]" },
+  { name: "INFINITI", style: "font-light tracking-[0.2em]" },
   { name: "KAIYI", style: "font-semibold tracking-widest" },
-  { name: "MERCEDES-BENZ", style: "font-light tracking-wide text-base sm:text-lg" },
+  {
+    name: "MERCEDES-BENZ",
+    style: "font-light tracking-wide text-[0.65rem] leading-tight sm:text-xs md:text-sm",
+  },
   { name: "NISSAN", style: "font-bold tracking-widest" },
   { name: "SOLLERS", style: "font-semibold tracking-wide" },
-  { name: "SWM", style: "font-bold tracking-[0.4em]" },
+  { name: "SWM", style: "font-bold tracking-widest" },
   { name: "TANK", style: "font-bold tracking-widest" },
-  { name: "VW", style: "font-bold tracking-[0.35em]" },
+  { name: "VW", style: "font-bold tracking-widest" },
 ];
 
 export default function Clients() {
@@ -52,11 +55,11 @@ export default function Clients() {
           </div>
         </div>
 
-        <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7">
+        <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4 xl:grid-cols-6">
           {clients.map((client) => (
             <div
               key={client.name}
-              className="flex h-20 items-center justify-center rounded-xl border border-border bg-surface/50 px-4 transition-all hover:border-accent/20 hover:bg-surface"
+              className="flex min-h-20 items-center justify-center rounded-xl border border-border bg-surface/50 px-3 py-4 text-center transition-all hover:border-accent/20 hover:bg-surface sm:min-h-[5.5rem] sm:px-4"
             >
               <span className={`text-sm text-muted sm:text-base ${client.style}`}>
                 {client.name}
