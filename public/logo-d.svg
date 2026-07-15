@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="43 39 100 104" role="img" aria-labelledby="title">
+  <title id="title">DealerCMS — буква D</title>
+  <g fill="#fcc96c">
+    <rect x="43" y="39" width="47" height="27" rx="5"/>
+    <rect x="43" y="69" width="27" height="44" rx="5"/>
+    <rect x="43" y="116" width="47" height="27" rx="5"/>
+    <path d="M93 39 C120.6 39 143 61.4 143 89 H118 C118 76.3 107.7 66 95 66 H93 Z"/>
+    <path d="M93 92 H118 C118 105.3 107.3 116 94 116 H93 V143 C120.6 143 143 120.2 143 92 Z"/>
+  </g>
+</svg>

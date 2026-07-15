@@ -1,10 +1,8 @@
 const clients = [
   { name: "BMW", style: "font-bold tracking-widest" },
-  { name: "DEALER", style: "font-semibold tracking-wide" },
   { name: "FORD", style: "font-bold tracking-wider" },
   { name: "FORLAND", style: "font-semibold tracking-wide" },
   { name: "FOTON", style: "font-semibold tracking-wider" },
-  { name: "HAVAL", style: "font-bold tracking-wide" },
   { name: "INFINITI", style: "font-light tracking-[0.3em]" },
   { name: "KAIYI", style: "font-semibold tracking-widest" },
   { name: "MERCEDES-BENZ", style: "font-light tracking-wide text-base sm:text-lg" },

@@ -53,7 +53,7 @@ export default function Hero() {
         <div className="mt-16 grid grid-cols-2 gap-4 border-t border-border pt-8 sm:mt-20 sm:grid-cols-4 sm:gap-6 sm:pt-10">
           {[
             { value: "3", label: "модуля в экосистеме" },
-            { value: "14", label: "брендов в портфеле" },
+            { value: "12", label: "брендов в портфеле" },
             { value: "Под ключ", label: "запуск и сопровождение", small: true },
             { value: "100%", label: "фокус на автобизнесе" },
           ].map((stat) => (
