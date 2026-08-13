@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Logo from "./Logo";
+import { SITE_PHONE, SITE_PHONE_TEL } from "../lib/site";
 
 const navLinks = [
   { href: "#products", label: "Продукты", id: "products" },
@@ -121,10 +122,10 @@ export default function Header() {
 
         <div className="hidden items-center gap-4 lg:flex">
           <a
-            href="tel:88003332349"
+            href={`tel:${SITE_PHONE_TEL}`}
             className="text-sm text-muted transition-colors hover:text-foreground"
           >
-            8 (800) 333-23-49
+            {SITE_PHONE}
           </a>
           <a
             href="#contact"
@@ -165,13 +166,13 @@ export default function Header() {
                 </a>
               ))}
               <a
-                href="tel:88003332349"
+                href={`tel:${SITE_PHONE_TEL}`}
                 className={`px-4 py-3 text-muted transition-colors hover:text-foreground ${
                   menuOpen ? "menu-item-animate" : ""
                 }`}
                 style={menuOpen ? { animationDelay: "240ms" } : undefined}
               >
-                8 (800) 333-23-49
+                {SITE_PHONE}
               </a>
               <a
                 href="#contact"

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Logo from "../components/Logo";
+import { SITE_EMAIL } from "../lib/site";
 
 export const metadata = {
   title: "Согласие на обработку персональных данных",
@@ -57,10 +58,10 @@ export default function ConsentPage() {
             Согласие действует до момента его отзыва. Отзыв согласия
             возможен путём направления письма на{" "}
             <a
-              href="mailto:info@dealercms.ru"
+              href={`mailto:${SITE_EMAIL}`}
               className="text-accent hover:underline"
             >
-              info@dealercms.ru
+              {SITE_EMAIL}
             </a>
             .
           </p>

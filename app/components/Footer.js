@@ -1,4 +1,5 @@
 import Logo from "./Logo";
+import { SITE_EMAIL, SITE_PHONE, SITE_PHONE_TEL } from "../lib/site";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -24,18 +25,18 @@ export default function Footer() {
             <ul className="mt-4 space-y-3 text-sm text-muted">
               <li>
                 <a
-                  href="tel:88003332349"
+                  href={`tel:${SITE_PHONE_TEL}`}
                   className="transition-colors hover:text-accent"
                 >
-                  8 (800) 333-23-49
+                  {SITE_PHONE}
                 </a>
               </li>
               <li>
                 <a
-                  href="mailto:info@dealercms.ru"
+                  href={`mailto:${SITE_EMAIL}`}
                   className="transition-colors hover:text-accent"
                 >
-                  info@dealercms.ru
+                  {SITE_EMAIL}
                 </a>
               </li>
             </ul>

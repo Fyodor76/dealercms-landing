@@ -9,6 +9,7 @@ import {
 } from "../lib/contact-form-schema";
 import { getContactApiUrl } from "../lib/contact-api";
 import { formatRuPhone, RU_PHONE_MASK_EMPTY } from "../lib/phone-mask";
+import { SITE_EMAIL, SITE_PHONE, SITE_PHONE_TEL } from "../lib/site";
 
 const inputClass = (hasError) =>
   `w-full rounded-xl border bg-surface px-4 py-3 text-foreground outline-none transition-colors placeholder:text-muted/50 focus:ring-1 ${
@@ -89,7 +90,7 @@ export default function ContactForm() {
 
             <div className="mt-10 space-y-6">
               <a
-                href="tel:88003332349"
+                href={`tel:${SITE_PHONE_TEL}`}
                 className="flex items-center gap-4 text-lg transition-colors hover:text-accent"
               >
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent">
@@ -99,12 +100,12 @@ export default function ContactForm() {
                 </div>
                 <div>
                   <div className="text-sm text-muted">Телефон</div>
-                  <div className="font-semibold">8 (800) 333-23-49</div>
+                  <div className="font-semibold">{SITE_PHONE}</div>
                 </div>
               </a>
 
               <a
-                href="mailto:info@dealercms.ru"
+                href={`mailto:${SITE_EMAIL}`}
                 className="flex items-center gap-4 text-lg transition-colors hover:text-accent"
               >
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent">
@@ -114,7 +115,7 @@ export default function ContactForm() {
                 </div>
                 <div>
                   <div className="text-sm text-muted">E-mail</div>
-                  <div className="font-semibold">info@dealercms.ru</div>
+                  <div className="font-semibold">{SITE_EMAIL}</div>
                 </div>
               </a>
             </div>

@@ -1,4 +1,10 @@
-import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "../lib/site";
+import {
+  SITE_DESCRIPTION,
+  SITE_EMAIL,
+  SITE_NAME,
+  SITE_PHONE_SCHEMA,
+  SITE_URL,
+} from "../lib/site";
 
 export default function JsonLd() {
   const schema = {
@@ -9,8 +15,8 @@ export default function JsonLd() {
         "@id": `${SITE_URL}/#organization`,
         name: SITE_NAME,
         url: SITE_URL,
-        email: "info@dealercms.ru",
-        telephone: "+7-800-333-23-49",
+        email: SITE_EMAIL,
+        telephone: SITE_PHONE_SCHEMA,
         description: SITE_DESCRIPTION,
       },
       {

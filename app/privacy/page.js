@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Logo from "../components/Logo";
+import { SITE_EMAIL, SITE_PHONE, SITE_PHONE_TEL } from "../lib/site";
 
 export const metadata = {
   title: "Политика обработки персональных данных",
@@ -94,17 +95,17 @@ export default function PrivacyPage() {
             <p>
               По вопросам обработки персональных данных обращайтесь:{" "}
               <a
-                href="mailto:info@dealercms.ru"
+                href={`mailto:${SITE_EMAIL}`}
                 className="text-accent hover:underline"
               >
-                info@dealercms.ru
+                {SITE_EMAIL}
               </a>
               , тел.{" "}
               <a
-                href="tel:88003332349"
+                href={`tel:${SITE_PHONE_TEL}`}
                 className="text-accent hover:underline"
               >
-                8 (800) 333-23-49
+                {SITE_PHONE}
               </a>
               .
             </p>
