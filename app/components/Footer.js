@@ -1,5 +1,13 @@
 import Logo from "./Logo";
-import { SITE_EMAIL, SITE_PHONE, SITE_PHONE_TEL } from "../lib/site";
+import {
+  LEGAL_ADDRESS,
+  LEGAL_ENTITY_SHORT,
+  LEGAL_INN,
+  LEGAL_OGRN,
+  SITE_EMAIL,
+  SITE_PHONE,
+  SITE_PHONE_TEL,
+} from "../lib/site";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -15,6 +23,10 @@ export default function Footer() {
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted">
               Платформа для создания сайтов автодилеров и дистрибьюторов.
               Цифровые решения для автомобильного бизнеса.
+            </p>
+            <p className="mt-4 max-w-md text-xs leading-relaxed text-muted/80">
+              Оператор ПДн: {LEGAL_ENTITY_SHORT}, ИНН {LEGAL_INN}, ОГРН{" "}
+              {LEGAL_OGRN}. {LEGAL_ADDRESS}
             </p>
           </div>
 
@@ -68,7 +80,7 @@ export default function Footer() {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 sm:flex-row">
           <p className="text-sm text-muted">
-            © {currentYear} DealerCMS. Все права защищены.
+            © {currentYear} {LEGAL_ENTITY_SHORT}. Все права защищены.
           </p>
           <div className="flex flex-wrap justify-center gap-6 text-sm text-muted sm:justify-end">
             <a href="/cookies" className="transition-colors hover:text-accent">

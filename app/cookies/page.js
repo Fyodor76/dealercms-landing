@@ -1,6 +1,14 @@
 import Link from "next/link";
 import Logo from "../components/Logo";
-import { SITE_EMAIL, SITE_PHONE, SITE_PHONE_TEL } from "../lib/site";
+import {
+  LEGAL_ADDRESS,
+  LEGAL_ENTITY_SHORT,
+  LEGAL_INN,
+  LEGAL_POLICY_DATE,
+  SITE_EMAIL,
+  SITE_PHONE,
+  SITE_PHONE_TEL,
+} from "../lib/site";
 
 export const metadata = {
   title: "Политика использования cookie",
@@ -30,13 +38,28 @@ export default function CookiesPage() {
           Политика использования cookie
         </h1>
         <p className="mt-4 text-sm text-muted">
-          Дата публикации: 15 июля 2026 г.
+          Дата публикации: {LEGAL_POLICY_DATE}
         </p>
 
         <div className="mt-10 space-y-6 text-sm leading-relaxed text-muted">
           <section>
             <h2 className="mb-3 text-lg font-semibold text-foreground">
-              1. Что такое cookie
+              1. Оператор
+            </h2>
+            <p>
+              Сайтом dealercms.ru управляет {LEGAL_ENTITY_SHORT} (ИНН{" "}
+              {LEGAL_INN}), юридический адрес: {LEGAL_ADDRESS}. Обработка
+              данных, связанных с cookie, осуществляется в соответствии с{" "}
+              <Link href="/privacy" className="text-accent hover:underline">
+                Политикой обработки персональных данных
+              </Link>
+              .
+            </p>
+          </section>
+
+          <section>
+            <h2 className="mb-3 text-lg font-semibold text-foreground">
+              2. Что такое cookie
             </h2>
             <p>
               Cookie — это небольшие текстовые файлы, которые сохраняются на
@@ -48,7 +71,7 @@ export default function CookiesPage() {
 
           <section>
             <h2 className="mb-3 text-lg font-semibold text-foreground">
-              2. Какие cookie мы используем
+              3. Какие cookie мы используем
             </h2>
             <ul className="list-disc space-y-2 pl-5">
               <li>
@@ -66,7 +89,7 @@ export default function CookiesPage() {
 
           <section>
             <h2 className="mb-3 text-lg font-semibold text-foreground">
-              3. Зачем мы используем cookie
+              4. Зачем мы используем cookie
             </h2>
             <ul className="list-disc space-y-2 pl-5">
               <li>Обеспечение корректной работы Сайта</li>
@@ -77,7 +100,7 @@ export default function CookiesPage() {
 
           <section>
             <h2 className="mb-3 text-lg font-semibold text-foreground">
-              4. Как управлять cookie
+              5. Как управлять cookie
             </h2>
             <p>
               Вы можете отключить или удалить cookie в настройках вашего
@@ -92,7 +115,7 @@ export default function CookiesPage() {
 
           <section>
             <h2 className="mb-3 text-lg font-semibold text-foreground">
-              5. Срок хранения
+              6. Срок хранения
             </h2>
             <p>
               Необходимые cookie хранятся до истечения срока их действия или
@@ -104,7 +127,7 @@ export default function CookiesPage() {
 
           <section>
             <h2 className="mb-3 text-lg font-semibold text-foreground">
-              6. Контакты
+              7. Контакты
             </h2>
             <p>
               По вопросам использования cookie обращайтесь:{" "}
@@ -121,7 +144,7 @@ export default function CookiesPage() {
               >
                 {SITE_PHONE}
               </a>
-              .
+              , адрес: {LEGAL_ADDRESS}.
             </p>
           </section>
         </div>

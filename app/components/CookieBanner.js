@@ -37,6 +37,13 @@ export default function CookieBanner() {
             className="text-accent underline-offset-2 hover:underline"
           >
             Политикой использования cookie
+          </Link>{" "}
+          и{" "}
+          <Link
+            href="/privacy"
+            className="text-accent underline-offset-2 hover:underline"
+          >
+            Политикой обработки персональных данных
           </Link>
           .
         </p>
