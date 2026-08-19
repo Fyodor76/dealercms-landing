@@ -1,4 +1,8 @@
 import {
+  LEGAL_ADDRESS,
+  LEGAL_ENTITY_FULL,
+  LEGAL_INN,
+  LEGAL_OGRN,
   SITE_DESCRIPTION,
   SITE_EMAIL,
   SITE_NAME,
@@ -14,10 +18,20 @@ export default function JsonLd() {
         "@type": "Organization",
         "@id": `${SITE_URL}/#organization`,
         name: SITE_NAME,
+        legalName: LEGAL_ENTITY_FULL,
         url: SITE_URL,
         email: SITE_EMAIL,
         telephone: SITE_PHONE_SCHEMA,
         description: SITE_DESCRIPTION,
+        taxID: LEGAL_INN,
+        identifier: LEGAL_OGRN,
+        address: {
+          "@type": "PostalAddress",
+          addressCountry: "RU",
+          streetAddress: "ул. Салтыкова-Щедрина, д. 19/21, кв. 4А",
+          addressLocality: "Орёл",
+          addressRegion: "Орловская область",
+        },
       },
       {
         "@type": "WebSite",
@@ -38,3 +52,4 @@ export default function JsonLd() {
     />
   );
 }
+
