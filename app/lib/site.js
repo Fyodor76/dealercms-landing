@@ -43,6 +43,10 @@ export const SITE_PRODUCTS = [
 /** Яндекс.Метрика */
 export const YANDEX_METRIKA_ID = 113443583;
 
+/** Google Search Console */
+export const GOOGLE_SITE_VERIFICATION =
+  "pQzLWBZtiqsaC2QK28O1SzO5NNqzmmgDIcqGI1wmwWQ";
+
 export const COOKIE_CONSENT_KEY = "dealercms-cookie-consent";
 export const COOKIE_CONSENT_EVENT = "dealercms-cookie-accepted";
 

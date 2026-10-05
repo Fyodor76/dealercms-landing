@@ -3,6 +3,7 @@ import CookieBanner from "./components/CookieBanner";
 import JsonLd from "./components/JsonLd";
 import YandexMetrika from "./components/YandexMetrika";
 import {
+  GOOGLE_SITE_VERIFICATION,
   SITE_DESCRIPTION,
   SITE_KEYWORDS,
   SITE_NAME,
@@ -83,6 +84,9 @@ export const metadata = {
     title: SITE_NAME,
     capable: true,
     statusBarStyle: "black-translucent",
+  },
+  verification: {
+    google: GOOGLE_SITE_VERIFICATION,
   },
   other: {
     "yandex-tableau-widget": "logo=/logo.svg, color=#06080d",
