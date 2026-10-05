@@ -3,10 +3,8 @@ export default function Logo({
   iconClassName = "h-[1.125em] w-[1.125em] sm:h-[1.15em] sm:w-[1.15em]",
 }) {
   return (
-    <span
-      className={`inline-flex items-baseline gap-1 ${className}`}
-      aria-label="DealerCMS"
-    >
+    <span className={`inline-flex items-baseline gap-1 ${className}`}>
+      <span className="sr-only">DealerCMS</span>
       <img
         src="/logo-d.svg"
         alt=""

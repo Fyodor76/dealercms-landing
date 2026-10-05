@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <section className="gradient-hero relative min-h-screen w-full overflow-hidden pt-20 sm:pt-24">
+    <section id="hero" className="gradient-hero relative min-h-screen w-full overflow-hidden pt-20 sm:pt-24">
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute left-1/2 top-1/3 h-[300px] w-[min(100vw,500px)] -translate-x-1/2 rounded-full bg-accent/5 blur-[80px] sm:h-[500px] sm:w-[800px] sm:blur-[120px]" />
         <div className="absolute right-0 top-0 h-[250px] w-[min(80vw,400px)] rounded-full bg-blue-500/5 blur-[80px] sm:h-[400px] sm:w-[400px] sm:blur-[100px]" />

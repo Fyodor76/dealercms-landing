@@ -15,6 +15,8 @@ export const metadata = {
   title: "Согласие на обработку персональных данных",
   description:
     "Согласие пользователя на обработку персональных данных при использовании сайта DealerCMS.",
+  alternates: { canonical: "/soglasie" },
+  robots: { index: true, follow: true },
 };
 
 export default function ConsentPage() {

@@ -17,6 +17,8 @@ export const metadata = {
   title: "Политика обработки персональных данных",
   description:
     "Политика обработки персональных данных ООО «ДИЛЕРЦМС»: принципы, основания, цели, хранение, передача и права субъектов.",
+  alternates: { canonical: "/privacy" },
+  robots: { index: true, follow: true },
 };
 
 function P({ children }) {

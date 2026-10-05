@@ -1,7 +1,13 @@
 import { Inter } from "next/font/google";
 import CookieBanner from "./components/CookieBanner";
 import JsonLd from "./components/JsonLd";
-import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "./lib/site";
+import {
+  SITE_DESCRIPTION,
+  SITE_KEYWORDS,
+  SITE_NAME,
+  SITE_TITLE,
+  SITE_URL,
+} from "./lib/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -13,41 +19,37 @@ const inter = Inter({
 export const viewport = {
   width: "device-width",
   initialScale: 1,
+  themeColor: "#06080d",
 };
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} — платформа сайтов для автодилеров и дистрибьюторов`,
+    default: SITE_TITLE,
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
-  keywords: [
-    "DealerCMS",
-    "CMS для автодилеров",
-    "сайты автодилеров",
-    "платформа для автобрендов",
-    "сайты дилеров",
-    "онлайн-продажи автомобилей",
-    "каталог автомобилей",
-    "цифровые решения для автобизнеса",
-  ],
+  keywords: SITE_KEYWORDS,
+  applicationName: SITE_NAME,
   authors: [{ name: SITE_NAME, url: SITE_URL }],
   creator: SITE_NAME,
   publisher: SITE_NAME,
+  referrer: "origin-when-cross-origin",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
   robots: {
-    index: false,
-    follow: false,
-    nocache: true,
+    index: true,
+    follow: true,
+    nocache: false,
     googleBot: {
-      index: false,
-      follow: false,
-      noimageindex: true,
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
     },
   },
   alternates: {
@@ -58,30 +60,45 @@ export const metadata = {
     locale: "ru_RU",
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: `${SITE_NAME} — платформа для автодилеров`,
+    title: SITE_TITLE,
     description: SITE_DESCRIPTION,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE_NAME} — платформа для автодилеров`,
+    title: SITE_TITLE,
     description: SITE_DESCRIPTION,
   },
   category: "technology",
+  icons: {
+    icon: [
+      { url: "/icons/favicon.svg", type: "image/svg+xml" },
+      { url: "/icons/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+    ],
+    shortcut: "/icons/favicon.ico",
+    apple: [{ url: "/icons/apple-touch-icon.png", sizes: "180x180" }],
+  },
+  manifest: "/icons/site.webmanifest",
+  appleWebApp: {
+    title: SITE_NAME,
+    capable: true,
+    statusBarStyle: "black-translucent",
+  },
+  other: {
+    "yandex-tableau-widget": "logo=/logo.svg, color=#06080d",
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="ru" className={`${inter.variable} h-full antialiased`}>
-      <head>
-        <link rel="icon" type="image/png" href="/icons/favicon-96x96.png" sizes="96x96" />
-        <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
-        <link rel="shortcut icon" href="/icons/favicon.ico" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
-        <meta name="apple-mobile-web-app-title" content={SITE_NAME} />
-        <link rel="manifest" href="/icons/site.webmanifest" />
-        <JsonLd />
-      </head>
       <body className="min-h-full w-full overflow-x-hidden flex flex-col">
+        <JsonLd />
+        <a
+          href="#hero"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-accent focus:px-4 focus:py-2 focus:text-background"
+        >
+          К содержанию
+        </a>
         {children}
         <CookieBanner />
       </body>

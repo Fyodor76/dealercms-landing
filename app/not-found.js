@@ -4,6 +4,7 @@ import Logo from "./components/Logo";
 export default function NotFound() {
   return (
     <div className="gradient-hero flex min-h-screen flex-col">
+      <meta name="robots" content="noindex, nofollow" />
       <header className="border-b border-border">
         <div className="mx-auto flex h-16 max-w-7xl items-center px-4 sm:h-20 sm:px-6 lg:px-8">
           <Link href="/">

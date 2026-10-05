@@ -14,6 +14,8 @@ export const metadata = {
   title: "Политика использования cookie",
   description:
     "Политика использования cookie-файлов на сайте DealerCMS: какие cookie применяются и как ими управлять.",
+  alternates: { canonical: "/cookies" },
+  robots: { index: true, follow: true },
 };
 
 export default function CookiesPage() {

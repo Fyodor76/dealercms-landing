@@ -100,7 +100,7 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:h-20 sm:px-6 lg:px-8">
-        <a href="#" className="flex items-center">
+        <a href="/" className="flex items-center" title="DealerCMS — на главную">
           <Logo />
         </a>
 

@@ -1,0 +1,32 @@
+import { SITE_URL } from "./lib/site";
+
+export default function sitemap() {
+  const lastModified = new Date();
+
+  return [
+    {
+      url: SITE_URL,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 1,
+    },
+    {
+      url: `${SITE_URL}/privacy`,
+      lastModified,
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+    {
+      url: `${SITE_URL}/cookies`,
+      lastModified,
+      changeFrequency: "yearly",
+      priority: 0.2,
+    },
+    {
+      url: `${SITE_URL}/soglasie`,
+      lastModified,
+      changeFrequency: "yearly",
+      priority: 0.2,
+    },
+  ];
+}
