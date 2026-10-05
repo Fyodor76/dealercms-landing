@@ -2,8 +2,10 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-
-const STORAGE_KEY = "dealercms-cookie-consent";
+import {
+  COOKIE_CONSENT_EVENT,
+  COOKIE_CONSENT_KEY,
+} from "../lib/site";
 
 export default function CookieBanner() {
   const [visible, setVisible] = useState(false);
@@ -11,12 +13,13 @@ export default function CookieBanner() {
 
   useEffect(() => {
     setMounted(true);
-    const consent = localStorage.getItem(STORAGE_KEY);
+    const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
     if (!consent) setVisible(true);
   }, []);
 
   const accept = () => {
-    localStorage.setItem(STORAGE_KEY, "accepted");
+    localStorage.setItem(COOKIE_CONSENT_KEY, "accepted");
+    window.dispatchEvent(new Event(COOKIE_CONSENT_EVENT));
     setVisible(false);
   };
 

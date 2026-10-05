@@ -40,6 +40,12 @@ export const SITE_PRODUCTS = [
   },
 ];
 
+/** Яндекс.Метрика */
+export const YANDEX_METRIKA_ID = 113443583;
+
+export const COOKIE_CONSENT_KEY = "dealercms-cookie-consent";
+export const COOKIE_CONSENT_EVENT = "dealercms-cookie-accepted";
+
 export const SITE_EMAIL = "info@dealercms.ru";
 
 export const SITE_PHONE = "8 (800) 222-85-91";

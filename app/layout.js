@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import CookieBanner from "./components/CookieBanner";
 import JsonLd from "./components/JsonLd";
+import YandexMetrika from "./components/YandexMetrika";
 import {
   SITE_DESCRIPTION,
   SITE_KEYWORDS,
@@ -92,6 +93,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ru" className={`${inter.variable} h-full antialiased`}>
       <body className="min-h-full w-full overflow-x-hidden flex flex-col">
+        <YandexMetrika />
         <JsonLd />
         <a
           href="#hero"
