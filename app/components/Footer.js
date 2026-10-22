@@ -1,9 +1,12 @@
 import Logo from "./Logo";
 import {
   LEGAL_ADDRESS,
+  LEGAL_ENTITY_FULL,
   LEGAL_ENTITY_SHORT,
   LEGAL_INN,
   LEGAL_OGRN,
+  LEGAL_OKVED,
+  LEGAL_OKVED_NAME,
   SITE_EMAIL,
   SITE_PHONE,
   SITE_PHONE_TEL,
@@ -25,8 +28,9 @@ export default function Footer() {
               Цифровые решения для автомобильного бизнеса.
             </p>
             <p className="mt-4 max-w-md text-xs leading-relaxed text-muted/80">
-              Оператор ПДн: {LEGAL_ENTITY_SHORT}, ИНН {LEGAL_INN}, ОГРН{" "}
-              {LEGAL_OGRN}. {LEGAL_ADDRESS}
+              {LEGAL_ENTITY_FULL} ({LEGAL_ENTITY_SHORT}), ИНН {LEGAL_INN}, ОГРН{" "}
+              {LEGAL_OGRN}. {LEGAL_ADDRESS}. Основной ОКВЭД: {LEGAL_OKVED} —{" "}
+              {LEGAL_OKVED_NAME}.
             </p>
           </div>
 
@@ -74,6 +78,14 @@ export default function Footer() {
                   DealerCMS Sales
                 </a>
               </li>
+              <li>
+                <a
+                  href="/it-activity"
+                  className="transition-colors hover:text-accent"
+                >
+                  ИТ-деятельность
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -83,6 +95,12 @@ export default function Footer() {
             © {currentYear} {LEGAL_ENTITY_SHORT}. Все права защищены.
           </p>
           <div className="flex flex-wrap justify-center gap-6 text-sm text-muted sm:justify-end">
+            <a
+              href="/it-activity"
+              className="transition-colors hover:text-accent"
+            >
+              ИТ-деятельность
+            </a>
             <a href="/cookies" className="transition-colors hover:text-accent">
               Политика cookie
             </a>

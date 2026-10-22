@@ -11,6 +11,12 @@ export default function sitemap() {
       priority: 1,
     },
     {
+      url: `${SITE_URL}/it-activity`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: `${SITE_URL}/privacy`,
       lastModified,
       changeFrequency: "yearly",
