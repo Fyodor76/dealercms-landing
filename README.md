@@ -92,7 +92,7 @@ cp .env.example .env
 nano .env
 ```
 
-Заполни `NEXT_PUBLIC_API_URL` и переменные `SMTP_*` (см. раздел [Переменные окружения](#переменные-окружения)).
+Заполни `UNISENDER_API_KEY`, `MAIL_FROM`, `MAIL_TO` (см. раздел [Переменные окружения](#переменные-окружения)).
 
 ---
 
@@ -110,14 +110,11 @@ nano .env
 | `HOST`                | IP-адрес сервера                                                                                            |
 | `USER`                | пользователь SSH (обычно `root`)                                                                            |
 | `SSH_PRIVATE_KEY`     | содержимое файла `~/.ssh/id_rsa` или `~/.ssh/id_ed25519` с **рабочей машины**, которым ты входишь на сервер |
-| `NEXT_PUBLIC_API_URL` | продакшн URL, например `https://api.lumirix.ru`                                                             |
-| `SMTP_HOST`           | адрес почтового сервера Beget, `smtp.beget.com`                                                             |
-| `SMTP_PORT`           | порт SMTP, `465`                                                                                            |
-| `SMTP_SECURE`         | `true` — соединение по SSL на 465 порту                                                                     |
-| `SMTP_USER`           | почтовый ящик на Beget, например `noreply@lumirix.ru`                                                       |
-| `SMTP_PASSWORD`       | пароль от этого почтового ящика                                                                             |
-| `SMTP_FROM`           | адрес отправителя писем (обычно совпадает с `SMTP_USER`)                                                    |
-| `SMTP_TO`             | адрес, на который приходят письма с формы/уведомления сайта                                                 |
+| `NEXT_PUBLIC_API_URL` | обычно пусто (форма бьёт в `/api/contact`)                                                                  |
+| `UNISENDER_API_KEY`   | API-ключ Unisender Go                                                                                       |
+| `MAIL_FROM`           | отправитель на подтверждённом домене, напр. `noreply@dealercms.ru`                                          |
+| `MAIL_FROM_NAME`      | имя отправителя, напр. `DealerCMS`                                                                          |
+| `MAIL_TO`             | куда падают заявки, напр. `fydorzbinyakov@gmail.com`                                                        |
 
 
 > `SSH_PRIVATE_KEY` — это ключ для входа GitHub Actions **на сервер** (не deploy key для GitHub). Это тот же ключ, которым ты сам заходишь по SSH. Публичная часть этого ключа должна быть в `~/.ssh/authorized_keys` на сервере.
@@ -154,13 +151,10 @@ jobs:
 
             cat > .env <<ENVEOF
             NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }}
-            SMTP_HOST=${{ secrets.SMTP_HOST }}
-            SMTP_PORT=${{ secrets.SMTP_PORT }}
-            SMTP_SECURE=${{ secrets.SMTP_SECURE }}
-            SMTP_USER=${{ secrets.SMTP_USER }}
-            SMTP_PASSWORD=${{ secrets.SMTP_PASSWORD }}
-            SMTP_FROM=${{ secrets.SMTP_FROM }}
-            SMTP_TO=${{ secrets.SMTP_TO }}
+            UNISENDER_API_KEY=${{ secrets.UNISENDER_API_KEY }}
+            MAIL_FROM=${{ secrets.MAIL_FROM }}
+            MAIL_FROM_NAME=${{ secrets.MAIL_FROM_NAME }}
+            MAIL_TO=${{ secrets.MAIL_TO }}
             ENVEOF
 
             docker compose build
@@ -183,19 +177,16 @@ cp .env.example .env
 ```
 
 
-| Переменная            | Описание                                                  |
-| --------------------- | --------------------------------------------------------- |
-| `NEXT_PUBLIC_API_URL` | URL API, доступен и в браузере, и на сервере              |
-| `SMTP_HOST`           | `smtp.beget.com`                                          |
-| `SMTP_PORT`           | `465`                                                     |
-| `SMTP_SECURE`         | `true` (SSL на 465 порту)                                 |
-| `SMTP_USER`           | логин — полный адрес почтового ящика на Beget             |
-| `SMTP_PASSWORD`       | пароль от почтового ящика                                 |
-| `SMTP_FROM`           | адрес отправителя писем                                   |
-| `SMTP_TO`             | адрес получателя (куда падают заявки/уведомления с сайта) |
+| Переменная            | Описание                                                                 |
+| --------------------- | ------------------------------------------------------------------------ |
+| `NEXT_PUBLIC_API_URL` | обычно пусто — форма шлёт на `/api/contact`                              |
+| `UNISENDER_API_KEY`   | API-ключ Unisender Go                                                    |
+| `MAIL_FROM`           | `noreply@dealercms.ru` (домен должен быть подтверждён в Unisender Go)    |
+| `MAIL_FROM_NAME`      | `DealerCMS`                                                              |
+| `MAIL_TO`             | `fydorzbinyakov@gmail.com`                                               |
 
 
-> Настройки SMTP взяты из панели Beget: **Почта → нужный домен → почтовый ящик**. Подробнее: [beget.com/ru/kb/faq/mail](https://beget.com/ru/kb/faq/mail).
+> Отправка через [Unisender Go Web API](https://godocs.unisender.ru/web-api-ref) (`email/send`). Домен `dealercms.ru` и домен ссылок `email.dealercms.ru` настраиваются в кабинете Unisender Go.
 
 ---
 

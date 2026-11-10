@@ -1,27 +1,27 @@
-import nodemailer from "nodemailer";
+const DEFAULT_API_URL =
+  "https://goapi.unisender.ru/ru/transactional/api/v1/email/send.json";
 
-function getSmtpConfig() {
-  const host = process.env.SMTP_HOST;
-  const user = process.env.SMTP_USER;
-  const password = process.env.SMTP_PASSWORD;
+function getMailConfig() {
+  const apiKey = process.env.UNISENDER_API_KEY;
+  const fromEmail = process.env.MAIL_FROM || "noreply@dealercms.ru";
+  const to = process.env.MAIL_TO || "fydorzbinyakov@gmail.com";
 
-  if (!host || !user || !password) {
-    throw new Error("SMTP is not configured");
+  if (!apiKey) {
+    throw new Error("Mail is not configured");
   }
 
   return {
-    host,
-    port: Number(process.env.SMTP_PORT || 465),
-    secure: process.env.SMTP_SECURE !== "false",
-    auth: { user, pass: password },
+    apiKey,
+    apiUrl: process.env.UNISENDER_API_URL || DEFAULT_API_URL,
+    fromEmail,
+    fromName: process.env.MAIL_FROM_NAME || "DealerCMS",
+    to,
   };
 }
 
 export async function sendContactEmail({ name, email, phone, message }) {
-  const transporter = nodemailer.createTransport(getSmtpConfig());
+  const { apiKey, apiUrl, fromEmail, fromName, to } = getMailConfig();
 
-  const from = process.env.SMTP_FROM || process.env.SMTP_USER;
-  const to = process.env.SMTP_TO || process.env.SMTP_USER;
   const phoneLine = phone?.trim() || "не указан";
   const messageLine = message?.trim() || "не указано";
 
@@ -49,14 +49,45 @@ export async function sendContactEmail({ name, email, phone, message }) {
     <p>${escapeHtml(messageLine).replace(/\n/g, "<br>")}</p>
   `;
 
-  await transporter.sendMail({
-    from,
-    to,
-    replyTo: email,
-    subject: `Заявка с сайта DealerCMS — ${name}`,
-    text,
-    html,
+  const payload = {
+    message: {
+      recipients: [{ email: to }],
+      skip_unsubscribe: 1,
+      body: {
+        html,
+        plaintext: text,
+      },
+      subject: `Заявка с сайта DealerCMS — ${name}`,
+      from_email: fromEmail,
+      from_name: fromName,
+      reply_to: email,
+      track_links: 0,
+      track_read: 0,
+    },
+  };
+
+  const response = await fetch(apiUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      "X-API-KEY": apiKey,
+    },
+    body: JSON.stringify(payload),
   });
+
+  const result = await response.json().catch(() => null);
+
+  if (!response.ok || result?.status === "error") {
+    const detail =
+      result?.message ||
+      result?.error ||
+      JSON.stringify(result) ||
+      response.statusText;
+    throw new Error(`Unisender Go send failed: ${detail}`);
+  }
+
+  return result;
 }
 
 function escapeHtml(value) {

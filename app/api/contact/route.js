@@ -24,8 +24,8 @@ export async function POST(request) {
       );
     }
 
-    if (error instanceof Error && error.message === "SMTP is not configured") {
-      console.error("Contact form: SMTP is not configured");
+    if (error instanceof Error && error.message === "Mail is not configured") {
+      console.error("Contact form: Unisender Go is not configured");
       return NextResponse.json(
         { error: "Сервис отправки временно недоступен" },
         { status: 503 },
